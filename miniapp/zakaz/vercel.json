@@ -1,9 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "webapp.py": {
-      "runtime": "@vercel/python@3.9"
-    }
+    "webapp.py": {}
   },
   "routes": [
     {
