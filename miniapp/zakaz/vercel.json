@@ -1,7 +1,9 @@
 {
   "version": 2,
   "functions": {
-    "webapp.py": {}
+    "webapp.py": {
+      "maxDuration": 10
+    }
   },
   "routes": [
     {
