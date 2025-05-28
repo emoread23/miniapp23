@@ -1,14 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "miniapp/zakaz/webapp.py": {
-      "runtime": "@vercel/python"
+    "webapp.py": {
+      "runtime": "@vercel/python@3.9"
     }
   },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/miniapp/zakaz/webapp.py"
+      "dest": "/webapp.py"
     }
   ]
 }
