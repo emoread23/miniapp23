@@ -1,4 +1,4 @@
-from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 from config import LEVELS, UPGRADES
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:
@@ -116,5 +116,13 @@ def get_settings_keyboard() -> InlineKeyboardMarkup:
             InlineKeyboardButton("💳 Кошелек", callback_data="settings_wallet"),
             InlineKeyboardButton("🔒 Безопасность", callback_data="settings_security")
         ]
+    ]
+    return InlineKeyboardMarkup(keyboard)
+
+def get_miniapp_keyboard(web_app_url):
+    """Создает инлайн-клавиатуру с кнопкой для открытия миниаппа."""
+    keyboard = [
+        [InlineKeyboardButton("🎮 Моя Империя", web_app=WebAppInfo(url=web_app_url))]
+        # Вы можете добавить сюда другие кнопки, если нужно
     ]
     return InlineKeyboardMarkup(keyboard) 

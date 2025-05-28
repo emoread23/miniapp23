@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(__name__)
+template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Flask(__name__, template_folder=template_dir)
 app.secret_key = os.getenv('SECRET_KEY', 'your-secret-key')
 
 logger = logging.getLogger(__name__)
@@ -97,6 +98,7 @@ def index():
     """
     Главная страница мини-приложения
     """
+    logger.info("Запрос к корневому пути '/' получен.")
     return render_template('index.html')
 
 @app.route('/api/user/<int:telegram_id>')

@@ -5,7 +5,7 @@ from config import BOT_TOKEN, WELCOME_MESSAGE, HELP_MESSAGE, MESSAGES, LEVELS, R
 from webapp.database import init_db_standalone, get_session, User, Transaction, ReferralBonus, UserUpgrade, UserAchievement
 from keyboards import (
     get_main_keyboard, get_admin_keyboard, get_level_keyboard,
-    get_confirm_keyboard, get_shop_keyboard, get_back_keyboard
+    get_confirm_keyboard, get_shop_keyboard, get_back_keyboard, get_miniapp_keyboard
 )
 import random
 import string
@@ -47,35 +47,19 @@ def generate_referral_code():
 
 # Обработчик команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user = update.effective_user
-    db = next(get_session())
-    
-    # Проверяем, существует ли пользователь
-    db_user = db.query(User).filter(User.telegram_id == user.id).first()
-    
-    if not db_user:
-        # Создаем нового пользователя
-        referral_code = generate_referral_code()
-        db_user = User(
-            telegram_id=user.id,
-            username=user.username,
-            first_name=user.first_name,
-            last_name=user.last_name,
-            referral_code=referral_code
-        )
-        db.add(db_user)
-        db.commit()
-    
-    # Создаем клавиатуру
-    keyboard = [
-        [KeyboardButton("👑 Моя Империя"), KeyboardButton("💎 Инвестировать")],
-        [KeyboardButton("💰 Вывести прибыль"), KeyboardButton("👥 Друзья")],
-        [KeyboardButton("🏪 Магазин"), KeyboardButton("🚀 Запустить мини-приложение", web_app=WebAppInfo(url=WEBAPP_URL))]
-    ]
-    
+    """Обрабатывает команду /start и отправляет приветственное сообщение с кнопкой миниаппа."""
+    web_app_url = "https://miniapp123.vercel.app/" # Укажите ваш URL на Vercel
+    keyboard = get_miniapp_keyboard(web_app_url)
+
+    welcome_message = (
+        "Привет! Добро пожаловать в Crypto Empire Quest.\n\n"
+        "Здесь ты строишь свою финансовую империю, привлекая друзей и прокачивая свой уровень.\n\n"
+        "Нажми на кнопку ниже, чтобы открыть свою Империю!"
+    )
+
     await update.message.reply_text(
-        WELCOME_MESSAGE,
-        reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+        welcome_message,
+        reply_markup=keyboard
     )
 
 # Обработчик команды /help
