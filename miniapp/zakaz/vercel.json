@@ -2,8 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.py": {
-      "runtime": "@vercel/python@3.9",
-      "handler": "index.app"
+      "maxDuration": 10
     }
   },
   "routes": [
