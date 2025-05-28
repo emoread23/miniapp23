@@ -1,0 +1,11 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.9
+build:
+  requirementsPath: requirements.txt
+run:
+  command: supervisord -c supervisord.conf
+  persistenceMount: /data
+  containerPort: 80
