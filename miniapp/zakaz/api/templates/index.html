@@ -319,13 +319,15 @@
             // Получаем telegram_id из URL
             const urlParams = new URLSearchParams(window.location.search);
             let telegramId = urlParams.get('user_id');
+            console.log("Attempted to get Telegram ID from URL:", telegramId); // Логирование 1
 
             // Пытаемся получить telegram_id из Telegram WebApp объекта, если он доступен
             if (!telegramId && window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
                  telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
-                 console.log("Telegram ID obtained from WebApp object:", telegramId);
+                 console.log("Telegram ID obtained from WebApp object:", telegramId); // Логирование 2
             }
 
+            console.log("Final telegramId before loading data:", telegramId); // Логирование 3
             if (telegramId) {
                 loadUserData();
             } else {
