@@ -186,7 +186,13 @@
     <script>
         // Получаем telegram_id из URL
         const urlParams = new URLSearchParams(window.location.search);
-        const telegramId = urlParams.get('user_id');
+        let telegramId = urlParams.get('user_id');
+
+        // Пытаемся получить telegram_id из Telegram WebApp объекта, если он доступен
+        if (!telegramId && window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
+             telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+             console.log("Telegram ID obtained from WebApp object:", telegramId);
+        }
 
         // Функция для загрузки данных пользователя
         async function loadUserData() {
