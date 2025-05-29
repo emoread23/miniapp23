@@ -50,6 +50,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает команду /start и отправляет приветственное сообщение с кнопкой миниаппа."""
     web_app_url = "https://miniapp123.vercel.app/" # Укажите ваш URL на Vercel
     user_id = update.effective_user.id # Получаем ID пользователя
+    logger.info(f"Generated WebApp URL for user {user_id}: {web_app_url}?user_id={user_id}") # Временное логирование
     keyboard = get_miniapp_keyboard(web_app_url, user_id) # Передаем user_id в функцию
 
     welcome_message = (
