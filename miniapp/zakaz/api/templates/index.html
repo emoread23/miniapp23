@@ -186,7 +186,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         // Функция для загрузки данных пользователя
-        async function loadUserData() {
+        async function loadUserData(telegramId) {
             if (!telegramId) {
                 console.error("Telegram User ID not found in URL.");
                 // Возможно, показать сообщение об ошибке пользователю
@@ -329,7 +329,7 @@
 
             console.log("Final telegramId before loading data:", telegramId); // Логирование 3
             if (telegramId) {
-                loadUserData();
+                loadUserData(telegramId);
             } else {
                  document.getElementById('username').textContent = "Ошибка: ID пользователя не найден в ссылке.";
             }
