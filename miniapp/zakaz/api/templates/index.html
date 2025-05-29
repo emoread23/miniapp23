@@ -185,16 +185,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // Получаем telegram_id из URL
-        const urlParams = new URLSearchParams(window.location.search);
-        let telegramId = urlParams.get('user_id');
-
-        // Пытаемся получить telegram_id из Telegram WebApp объекта, если он доступен
-        if (!telegramId && window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
-             telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
-             console.log("Telegram ID obtained from WebApp object:", telegramId);
-        }
-
         // Функция для загрузки данных пользователя
         async function loadUserData() {
             if (!telegramId) {
@@ -325,11 +315,29 @@
         }
 
         // Загружаем данные при загрузке страницы
-        if (telegramId) {
-            loadUserData();
-        } else {
-             document.getElementById('username').textContent = "Ошибка: ID пользователя не найден в ссылке.";
+        function initWebApp() {
+            // Получаем telegram_id из URL
+            const urlParams = new URLSearchParams(window.location.search);
+            let telegramId = urlParams.get('user_id');
+
+            // Пытаемся получить telegram_id из Telegram WebApp объекта, если он доступен
+            if (!telegramId && window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
+                 telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+                 console.log("Telegram ID obtained from WebApp object:", telegramId);
+            }
+
+            if (telegramId) {
+                loadUserData();
+            } else {
+                 document.getElementById('username').textContent = "Ошибка: ID пользователя не найден в ссылке.";
+            }
         }
+
+        // Ждем полной загрузки WebApp объекта (добавляем небольшую задержку)
+        // Хотя у WebApp нет специального события 'ready', можно использовать setTimeout или проверку в цикле
+        // Попробуем setTimeout как более простой вариант
+        setTimeout(initWebApp, 100); // Задержка 100 мс
+
     </script>
 </body>
 </html>
