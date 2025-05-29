@@ -8,10 +8,11 @@ import logging
 import os
 # from dotenv import load_dotenv # Закомментируем импорт
 
+# Загрузка переменных окружения
 # load_dotenv() # Закомментируем вызов
 
 # Создаем Flask приложение
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates') # Указываем путь к папке с шаблонами
 app.secret_key = os.getenv('SECRET_KEY', 'your-secret-key')
 
 logger = logging.getLogger(__name__)
