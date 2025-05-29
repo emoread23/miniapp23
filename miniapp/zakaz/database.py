@@ -3,10 +3,10 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv # Закомментируем импорт
 
 # Загрузка переменных окружения
-load_dotenv()
+# load_dotenv() # Закомментируем вызов
 
 # Создание базового класса для моделей
 Base = declarative_base()
