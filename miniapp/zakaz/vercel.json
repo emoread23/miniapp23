@@ -1,19 +1,18 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.py": {
-      "memory": 1024,
-      "maxDuration": 10
+  "builds": [
+    {
+      "src": "webapp.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "routes": [
     {
-      "src": "/api/index.py",
-      "dest": "/api/index"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/api/index"
+      "dest": "webapp.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "."
+  }
 }
