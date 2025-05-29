@@ -6,9 +6,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import desc, func
 import logging
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv # Закомментируем импорт
 
-load_dotenv()
+# load_dotenv() # Закомментируем вызов
 
 # Создаем Flask приложение
 app = Flask(__name__)
