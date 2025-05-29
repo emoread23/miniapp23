@@ -50,8 +50,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает команду /start и отправляет приветственное сообщение с кнопкой миниаппа."""
     web_app_url = "https://miniapp123.vercel.app/" # Укажите ваш URL на Vercel
     user_id = update.effective_user.id # Получаем ID пользователя
-    logger.info(f"Generated WebApp URL for user {user_id}: {web_app_url}?user_id={user_id}") # Временное логирование
-    keyboard = get_miniapp_keyboard(web_app_url, user_id) # Передаем user_id в функцию
+    final_webapp_url = f"{web_app_url}?user_id={user_id}" # Формируем URL прямо здесь
+    logger.info(f"Generated WebApp URL for user {user_id}: {final_webapp_url}") # Временное логирование
+    
+    keyboard = [
+        [InlineKeyboardButton("🎮 Моя Империя", web_app=WebAppInfo(url=final_webapp_url))]
+    ] # Создаем клавиатуру прямо здесь
+    keyboard = InlineKeyboardMarkup(keyboard)
 
     welcome_message = (
         "Привет! Добро пожаловать в Crypto Empire Quest.\n\n"
