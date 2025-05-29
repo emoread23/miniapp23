@@ -119,10 +119,12 @@ def get_settings_keyboard() -> InlineKeyboardMarkup:
     ]
     return InlineKeyboardMarkup(keyboard)
 
-def get_miniapp_keyboard(web_app_url):
+def get_miniapp_keyboard(web_app_url, user_id: int):
     """Создает инлайн-клавиатуру с кнопкой для открытия миниаппа."""
+    url_with_user_id = f"{web_app_url}?user_id={user_id}"
+    
     keyboard = [
-        [InlineKeyboardButton("🎮 Моя Империя", web_app=WebAppInfo(url=web_app_url))]
+        [InlineKeyboardButton("🎮 Моя Империя", web_app=WebAppInfo(url=url_with_user_id))]
         # Вы можете добавить сюда другие кнопки, если нужно
     ]
     return InlineKeyboardMarkup(keyboard) 

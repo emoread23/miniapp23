@@ -49,7 +49,8 @@ def generate_referral_code():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает команду /start и отправляет приветственное сообщение с кнопкой миниаппа."""
     web_app_url = "https://miniapp123.vercel.app/" # Укажите ваш URL на Vercel
-    keyboard = get_miniapp_keyboard(web_app_url)
+    user_id = update.effective_user.id # Получаем ID пользователя
+    keyboard = get_miniapp_keyboard(web_app_url, user_id) # Передаем user_id в функцию
 
     welcome_message = (
         "Привет! Добро пожаловать в Crypto Empire Quest.\n\n"
