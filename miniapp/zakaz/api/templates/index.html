@@ -112,6 +112,116 @@
             .blum-header, .blum-body { padding: 16px; }
             .blum-avatar { width: 48px; height: 48px; font-size: 1.7rem; }
         }
+        .blum-section-card {
+            background: rgba(40, 30, 70, 0.95);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            border: 1.5px solid rgba(255,255,255,0.06);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .blum-section-header {
+            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
+            border-radius: 22px 22px 0 0;
+            padding: 20px 24px 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .blum-section-header i {
+            font-size: 1.7rem;
+            color: #fff;
+            background: linear-gradient(135deg, #A084E8 0%, #8BE8E5 100%);
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.10);
+        }
+        .blum-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+        .blum-section-body {
+            padding: 24px;
+        }
+        /* Апгрейды */
+        .blum-upgrade-card {
+            background: rgba(160,132,232,0.08);
+            border-radius: 16px;
+            padding: 18px 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.07);
+        }
+        .blum-upgrade-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #A084E8;
+        }
+        .blum-upgrade-desc {
+            color: #B6BBC4;
+            font-size: 0.98rem;
+            margin-bottom: 6px;
+        }
+        /* Достижения */
+        .blum-achievement-card {
+            background: rgba(139,232,229,0.08);
+            border-radius: 16px;
+            padding: 18px 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px 0 rgba(139,232,229,0.07);
+            text-align: center;
+        }
+        .blum-achievement-img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 2.5px solid #8BE8E5;
+            margin-bottom: 8px;
+            object-fit: cover;
+            background: #fff;
+        }
+        .blum-achievement-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #8BE8E5;
+        }
+        .blum-achievement-desc {
+            color: #B6BBC4;
+            font-size: 0.95rem;
+        }
+        /* Транзакции */
+        .blum-transaction-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #393053;
+        }
+        .blum-transaction-row:last-child { border-bottom: none; }
+        .blum-transaction-type {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #A084E8;
+        }
+        .blum-transaction-amount {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #8BE8E5;
+        }
+        .blum-transaction-status {
+            font-size: 0.95rem;
+            color: #B6BBC4;
+            margin-left: 8px;
+        }
+        .blum-transaction-date {
+            font-size: 0.92rem;
+            color: #B6BBC4;
+            margin-left: 12px;
+        }
+        @media (max-width: 767.98px) {
+            .blum-section-header, .blum-section-body { padding: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -162,38 +272,62 @@
             </div>
 
             <div class="col-md-8">
-                <!-- Апгрейды -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0"><i class="fas fa-rocket"></i> Апгрейды</h5>
+                <!-- Blum-style Апгрейды -->
+                <div class="blum-section-card">
+                    <div class="blum-section-header">
+                        <i class="fas fa-rocket"></i>
+                        <span class="blum-section-title">Апгрейды</span>
                     </div>
-                    <div class="card-body">
-                        <div id="upgrades-list" class="row">
-                             <!-- Апгрейды будут загружены сюда -->
+                    <div class="blum-section-body">
+                        <div class="blum-upgrade-card">
+                            <div class="blum-upgrade-title">Фейковый апгрейд</div>
+                            <div class="blum-upgrade-desc">Описание апгрейда для красоты интерфейса.</div>
+                            <div class="blum-stat-label">Уровень: <span class="blum-stat-value">0</span></div>
+                        </div>
+                        <div class="blum-upgrade-card">
+                            <div class="blum-upgrade-title">Скорость клика</div>
+                            <div class="blum-upgrade-desc">Увеличивает скорость заработка.</div>
+                            <div class="blum-stat-label">Уровень: <span class="blum-stat-value">0</span></div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Достижения -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0"><i class="fas fa-trophy"></i> Достижения</h5>
+                <!-- Blum-style Достижения -->
+                <div class="blum-section-card">
+                    <div class="blum-section-header">
+                        <i class="fas fa-trophy"></i>
+                        <span class="blum-section-title">Достижения</span>
                     </div>
-                    <div class="card-body">
-                        <div id="achievements-list" class="row">
-                             <!-- Достижения будут загружены сюда -->
+                    <div class="blum-section-body d-flex flex-wrap gap-3">
+                        <div class="blum-achievement-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
+                            <div class="blum-achievement-title">Фейковое достижение</div>
+                            <div class="blum-achievement-desc">Получено за красоту!</div>
+                        </div>
+                        <div class="blum-achievement-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
+                            <div class="blum-achievement-title">Первые шаги</div>
+                            <div class="blum-achievement-desc">Вошёл в мини-аппу.</div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Транзакции -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0"><i class="fas fa-clipboard-list"></i> Последние транзакции</h5>
+                <!-- Blum-style Транзакции -->
+                <div class="blum-section-card">
+                    <div class="blum-section-header">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span class="blum-section-title">Последние транзакции</span>
                     </div>
-                    <div class="card-body">
-                        <div id="transactions-list">
-                             <!-- Транзакции будут загружены сюда -->
+                    <div class="blum-section-body">
+                        <div class="blum-transaction-row">
+                            <span class="blum-transaction-type">Пополнение</span>
+                            <span class="blum-transaction-amount">+0 USDT</span>
+                            <span class="blum-transaction-status">Выполнено</span>
+                            <span class="blum-transaction-date">01.01.2024</span>
+                        </div>
+                        <div class="blum-transaction-row">
+                            <span class="blum-transaction-type">Вывод</span>
+                            <span class="blum-transaction-amount">-0 USDT</span>
+                            <span class="blum-transaction-status">Выполнено</span>
+                            <span class="blum-transaction-date">01.01.2024</span>
                         </div>
                     </div>
                 </div>
