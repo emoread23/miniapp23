@@ -25,6 +25,7 @@ from notifications import (
 import asyncio
 import threading
 import os
+import requests
 
 # Настройка логирования
 logging.basicConfig(
@@ -45,9 +46,19 @@ ADMIN_SEARCH, ADMIN_USER_ACTION = range(2)
 def generate_referral_code():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
+def send_user_to_miniapp(telegram_id, username):
+    url = "https://miniapp123.vercel.app/api/save_user"  # <-- замени на свой адрес!
+    data = {"telegram_id": telegram_id, "username": username}
+    try:
+        requests.post(url, json=data, timeout=3)
+    except Exception as e:
+        print(f"Ошибка отправки данных в Miniapp: {e}")
+
 # Обработчик команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обрабатывает команду /start и отправляет приветственное сообщение с кнопкой миниаппа."""
+    # Отправляем данные пользователя в Miniapp
+    send_user_to_miniapp(update.effective_user.id, update.effective_user.username or "")
     web_app_url = "https://miniapp123.vercel.app/" # Укажите ваш URL на Vercel
     user_id = update.effective_user.id # Получаем ID пользователя
     final_webapp_url = f"{web_app_url}?user_id={user_id}" # Формируем URL прямо здесь
