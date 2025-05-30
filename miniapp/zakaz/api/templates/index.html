@@ -17,25 +17,25 @@
         .container-main {
             max-width: 480px;
             margin: 0 auto;
-            padding: 0 0 80px 0;
+            padding: 0 0 90px 0;
         }
         .blum-section {
-            margin-bottom: 32px;
+            margin-bottom: 44px;
         }
         .blum-card {
             background: #18181e;
             border-radius: 18px;
             box-shadow: 0 4px 24px 0 rgba(20,20,40,0.13);
-            padding: 22px 18px 18px 18px;
-            margin-bottom: 18px;
+            padding: 32px 24px 28px 24px;
+            margin-bottom: 24px;
             display: flex;
             flex-direction: column;
             gap: 0;
         }
         .blum-section-title {
-            font-size: 1.18rem;
+            font-size: 1.22rem;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             color: #fff;
             display: flex;
             align-items: center;
@@ -80,15 +80,16 @@
             border-radius: 12px;
             font-weight: 700;
             font-size: 1.08rem;
-            padding: 13px 0;
+            padding: 10px 0;
             border: none;
             width: 100%;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             margin-top: 0;
             transition: background 0.15s, color 0.15s;
         }
         .blum-btn-main:last-child { margin-bottom: 0; }
         .blum-card .blum-btn-main { margin-top: 0; }
+        .blum-card .blum-btn-main { font-size: 1.01rem; padding: 9px 0; }
         .blum-btn-main:active {
             background: #232336;
             color: #fff;
@@ -169,7 +170,7 @@
             left: 0; right: 0; bottom: 0;
             background: #18181e;
             border-top: 1.5px solid #232336;
-            height: 62px;
+            height: 52px;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -179,24 +180,26 @@
             background: none;
             border: none;
             color: #b0b0c3;
-            font-size: 1.1rem;
+            font-size: 1.02rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-weight: 500;
             transition: color 0.15s;
+            padding: 0 2px;
         }
+        .blum-menu-btn i {
+            font-size: 1.18rem;
+            margin-bottom: 1px;
+        }
+        .blum-menu-btn span { font-size: 0.87rem; }
         .blum-menu-btn.active, .blum-menu-btn:active {
             color: #fff;
         }
-        .blum-menu-btn i {
-            font-size: 1.35rem;
-            margin-bottom: 2px;
-        }
         @media (max-width: 600px) {
-            .container-main { padding: 0 0 80px 0; }
-            .blum-card, .blum-section { padding-left: 6px; padding-right: 6px; }
+            .container-main { padding: 0 0 70px 0; }
+            .blum-card, .blum-section { padding-left: 2px; padding-right: 2px; }
         }
     </style>
 </head>
