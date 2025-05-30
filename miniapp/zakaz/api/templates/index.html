@@ -19,69 +19,57 @@
             margin: 0 auto;
             padding: 0 0 80px 0;
         }
-        .blum-balance-card {
-            background: #18181e;
-            border-radius: 18px;
-            padding: 24px 20px 18px 20px;
-            margin-top: 18px;
-            margin-bottom: 18px;
-            box-shadow: 0 4px 24px 0 rgba(20,20,40,0.13);
-        }
-        .blum-balance-label {
-            color: #b0b0c3;
-            font-size: 1.02rem;
-            margin-bottom: 2px;
-        }
-        .blum-balance-value {
-            font-size: 2.1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .blum-main-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-        .blum-main-action {
-            flex: 1 1 0;
-            background: #18181e;
-            border-radius: 16px;
-            padding: 18px 0 10px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #fff;
-            font-size: 0.98rem;
-            font-weight: 500;
-            box-shadow: 0 2px 8px 0 rgba(20,20,40,0.08);
-            border: none;
-            transition: background 0.15s;
-        }
-        .blum-main-action i {
-            font-size: 1.5rem;
-            margin-bottom: 7px;
-        }
-        .blum-main-action:active {
-            background: #232336;
+        .blum-section {
+            margin-bottom: 32px;
         }
         .blum-card {
             background: #18181e;
             border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(20,20,40,0.13);
+            padding: 22px 18px 18px 18px;
             margin-bottom: 18px;
-            box-shadow: 0 2px 8px 0 rgba(20,20,40,0.10);
-            padding: 18px 18px 14px 18px;
         }
-        .blum-card-title {
-            font-size: 1.08rem;
+        .blum-section-title {
+            font-size: 1.18rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 18px;
             color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .blum-card-sub {
+        .blum-profile-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #232336;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #7b7be6;
+            margin-bottom: 10px;
+        }
+        .blum-profile-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .blum-profile-level {
+            color: #7b7be6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .blum-profile-stats {
             color: #b0b0c3;
-            font-size: 0.98rem;
-            margin-bottom: 8px;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        .blum-profile-stats .stat-value {
+            color: #fff;
+            font-weight: 700;
+            margin-left: 4px;
         }
         .blum-btn-main {
             background: #fff;
@@ -100,48 +88,78 @@
             background: #232336;
             color: #fff;
         }
-        .blum-points-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
+        .blum-upgrade-card {
+            background: #18181e;
+            border-radius: 14px;
+            padding: 15px 14px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px 0 rgba(123,123,230,0.05);
         }
-        .blum-point-item {
+        .blum-upgrade-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #7b7be6;
+        }
+        .blum-upgrade-desc {
+            color: #b6bbc4;
+            font-size: 0.97rem;
+            margin-bottom: 6px;
+        }
+        .blum-achievement-card {
+            background: #18181e;
+            border-radius: 14px;
+            padding: 15px 10px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px 0 rgba(139,232,229,0.04);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #232336;
+            gap: 14px;
         }
-        .blum-point-item:last-child { border-bottom: none; }
-        .blum-point-icon {
-            font-size: 1.3rem;
-            margin-right: 12px;
+        .blum-achievement-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #7b7be6;
+            object-fit: cover;
+            background: #fff;
         }
-        .blum-point-label {
-            font-size: 1.05rem;
+        .blum-achievement-title {
+            font-size: 1rem;
             font-weight: 600;
+            color: #7b7be6;
         }
-        .blum-point-value {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #fff;
-            margin-right: 10px;
+        .blum-achievement-desc {
+            color: #b6bbc4;
+            font-size: 0.93rem;
         }
-        .blum-point-btn {
-            background: #232336;
-            color: #fff;
-            border-radius: 8px;
-            border: none;
-            font-size: 0.98rem;
+        .blum-transaction-card {
+            background: #18181e;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px 0 rgba(20,20,40,0.07);
+        }
+        .blum-transaction-type {
+            font-size: 1rem;
             font-weight: 600;
-            padding: 6px 16px;
-            transition: background 0.15s;
+            color: #7b7be6;
         }
-        .blum-point-btn:active {
-            background: #39396a;
+        .blum-transaction-amount {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #8be8e5;
         }
-        /* Navbar */
-        .blum-navbar {
+        .blum-transaction-status {
+            font-size: 0.93rem;
+            color: #b6bbc4;
+            margin-left: 8px;
+        }
+        .blum-transaction-date {
+            font-size: 0.91rem;
+            color: #b6bbc4;
+            margin-left: 12px;
+        }
+        .blum-menu {
             position: fixed;
             left: 0; right: 0; bottom: 0;
             background: #18181e;
@@ -152,7 +170,7 @@
             align-items: center;
             z-index: 100;
         }
-        .blum-nav-btn {
+        .blum-menu-btn {
             background: none;
             border: none;
             color: #b0b0c3;
@@ -164,107 +182,121 @@
             font-weight: 500;
             transition: color 0.15s;
         }
-        .blum-nav-btn.active, .blum-nav-btn:active {
+        .blum-menu-btn.active, .blum-menu-btn:active {
             color: #fff;
         }
-        .blum-nav-btn i {
+        .blum-menu-btn i {
             font-size: 1.35rem;
             margin-bottom: 2px;
         }
         @media (max-width: 600px) {
             .container-main { padding: 0 0 80px 0; }
-            .blum-balance-card, .blum-card { padding-left: 10px; padding-right: 10px; }
+            .blum-card, .blum-section { padding-left: 6px; padding-right: 6px; }
         }
     </style>
 </head>
 <body>
     <div class="container-main">
-        <!-- Главная -->
-        <div class="blum-page" id="page-home">
-            <div class="blum-balance-card">
-                <div class="blum-balance-label">Общий баланс</div>
-                <div class="blum-balance-value">$0.00</div>
+        <!-- Профиль -->
+        <section class="blum-section" id="section-profile">
+            <div class="blum-section-title"><i class="fa-solid fa-user"></i>Профиль</div>
+            <div class="blum-card text-center">
+                <div class="blum-profile-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="blum-profile-name">Гость</div>
+                <div class="blum-profile-level">Новичок</div>
+                <div class="blum-profile-stats">Баланс: <span class="stat-value">0</span> USDT</div>
+                <div class="blum-profile-stats">Всего вложено: <span class="stat-value">0</span> USDT</div>
+                <div class="blum-profile-stats">Всего выведено: <span class="stat-value">0</span> USDT</div>
             </div>
-            <div class="blum-main-actions">
-                <button class="blum-main-action" id="action-token"><i class="fa-solid fa-leaf"></i>Запустить токен</button>
-                <button class="blum-main-action" id="action-income"><i class="fa-solid fa-coins"></i>Доход</button>
-                <button class="blum-main-action" id="action-bot"><i class="fa-solid fa-rocket"></i>Трейдинг-бот</button>
+        </section>
+        <!-- Апгрейды -->
+        <section class="blum-section" id="section-upgrades">
+            <div class="blum-section-title"><i class="fa-solid fa-rocket"></i>Апгрейды</div>
+            <div class="blum-upgrade-card">
+                <div class="blum-upgrade-title">Фейковый апгрейд</div>
+                <div class="blum-upgrade-desc">Описание апгрейда для красоты интерфейса.</div>
+                <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
             </div>
-            <div class="blum-card">
-                <div class="blum-card-title"><i class="fa-solid fa-bolt"></i> 0-дни чек-ина</div>
-                <div class="blum-card-sub">Следующий клейм через 14ч 49м</div>
-                <button class="blum-btn-main">Собрать</button>
+            <div class="blum-upgrade-card">
+                <div class="blum-upgrade-title">Скорость клика</div>
+                <div class="blum-upgrade-desc">Увеличивает скорость заработка.</div>
+                <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
             </div>
-            <div class="blum-card d-flex align-items-center justify-content-between">
+        </section>
+        <!-- Достижения -->
+        <section class="blum-section" id="section-achievements">
+            <div class="blum-section-title"><i class="fa-solid fa-trophy"></i>Достижения</div>
+            <div class="blum-achievement-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
                 <div>
-                    <div class="blum-card-title">New Listing → BMAN</div>
-                    <div class="blum-card-sub">Узнай первым о новых токенах!</div>
-                    <button class="blum-btn-main" style="width:auto;padding:6px 18px;font-size:1rem;">Check Now</button>
+                    <div class="blum-achievement-title">Фейковое достижение</div>
+                    <div class="blum-achievement-desc">Получено за красоту!</div>
                 </div>
-                <img src="https://i.ibb.co/6b8kQ7d/bman.png" alt="BMAN" style="width:54px;height:54px;border-radius:50%;margin-left:10px;">
             </div>
+            <div class="blum-achievement-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
+                <div>
+                    <div class="blum-achievement-title">Первые шаги</div>
+                    <div class="blum-achievement-desc">Вошёл в мини-аппу.</div>
+                </div>
+            </div>
+        </section>
+        <!-- Транзакции -->
+        <section class="blum-section" id="section-transactions">
+            <div class="blum-section-title"><i class="fa-solid fa-clipboard-list"></i>Транзакции</div>
+            <div class="blum-transaction-card">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="blum-transaction-type">Пополнение</span>
+                    <span class="blum-transaction-amount">+0 USDT</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="blum-transaction-status">Выполнено</span>
+                    <span class="blum-transaction-date">01.01.2024</span>
+                </div>
+            </div>
+            <div class="blum-transaction-card">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="blum-transaction-type">Вывод</span>
+                    <span class="blum-transaction-amount">-0 USDT</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="blum-transaction-status">Выполнено</span>
+                    <span class="blum-transaction-date">01.01.2024</span>
+                </div>
+            </div>
+        </section>
+        <!-- Магазин и кнопки -->
+        <section class="blum-section" id="section-shop">
+            <div class="blum-section-title"><i class="fa-solid fa-store"></i>Магазин</div>
             <div class="blum-card">
-                <div class="blum-card-title">Поинты</div>
-                <ul class="blum-points-list">
-                    <li class="blum-point-item">
-                        <span><i class="fa-solid fa-m"></i> <span class="blum-point-label">Meme</span></span>
-                        <span><span class="blum-point-value">0 MP</span><button class="blum-point-btn">Торгуй и зарабатывай</button></span>
-                    </li>
-                    <li class="blum-point-item">
-                        <span><i class="fa-brands fa-bitcoin"></i> <span class="blum-point-label">Blum</span></span>
-                        <span><span class="blum-point-value">10 BP</span><button class="blum-point-btn">Фарм</button></span>
-                    </li>
-                </ul>
+                <button class="blum-btn-main mb-2"><i class="fas fa-coins"></i> Инвестировать</button>
+                <button class="blum-btn-main mb-2"><i class="fas fa-wallet"></i> Вывести прибыль</button>
+                <button class="blum-btn-main mb-2"><i class="fas fa-users"></i> Друзья</button>
+                <button class="blum-btn-main mb-2"><i class="fas fa-store"></i> Магазин</button>
+                <button class="blum-btn-main"><i class="fas fa-chart-bar"></i> Топ игроков</button>
             </div>
-        </div>
-        <!-- Discover -->
-        <div class="blum-page" id="page-discover" style="display:none;">
-            <div class="blum-card" style="margin-top:18px;">
-                <div class="blum-card-title">Discover</div>
-                <div class="blum-card-sub">Здесь будут новые проекты и токены.</div>
-            </div>
-        </div>
-        <!-- Memepad -->
-        <div class="blum-page" id="page-memepad" style="display:none;">
-            <div class="blum-card" style="margin-top:18px;">
-                <div class="blum-card-title">Memepad</div>
-                <div class="blum-card-sub">Здесь будет Memepad.</div>
-            </div>
-        </div>
-        <!-- Друзья -->
-        <div class="blum-page" id="page-friends" style="display:none;">
-            <div class="blum-card" style="margin-top:18px;">
-                <div class="blum-card-title">Друзья</div>
-                <div class="blum-card-sub">Здесь будет список друзей и рефералов.</div>
-            </div>
-        </div>
-        <!-- Кошелек -->
-        <div class="blum-page" id="page-wallet" style="display:none;">
-            <div class="blum-card" style="margin-top:18px;">
-                <div class="blum-card-title">Кошелек</div>
-                <div class="blum-card-sub">Здесь будет информация о кошельке.</div>
-            </div>
-        </div>
+        </section>
     </div>
-    <!-- Навигация -->
-    <nav class="blum-navbar">
-        <button class="blum-nav-btn active" data-page="home"><i class="fa-solid fa-house"></i><span style="font-size:0.92rem;">Главная</span></button>
-        <button class="blum-nav-btn" data-page="discover"><i class="fa-solid fa-magnifying-glass"></i><span style="font-size:0.92rem;">Discover</span></button>
-        <button class="blum-nav-btn" data-page="memepad"><i class="fa-solid fa-bolt"></i><span style="font-size:0.92rem;">Memepad</span></button>
-        <button class="blum-nav-btn" data-page="friends"><i class="fa-solid fa-users"></i><span style="font-size:0.92rem;">Друзья</span></button>
-        <button class="blum-nav-btn" data-page="wallet"><i class="fa-solid fa-wallet"></i><span style="font-size:0.92rem;">Кошелек</span></button>
+    <!-- Нижнее меню -->
+    <nav class="blum-menu">
+        <button class="blum-menu-btn active" data-section="profile"><i class="fa-solid fa-user"></i><span style="font-size:0.92rem;">Профиль</span></button>
+        <button class="blum-menu-btn" data-section="upgrades"><i class="fa-solid fa-rocket"></i><span style="font-size:0.92rem;">Апгрейды</span></button>
+        <button class="blum-menu-btn" data-section="achievements"><i class="fa-solid fa-trophy"></i><span style="font-size:0.92rem;">Достижения</span></button>
+        <button class="blum-menu-btn" data-section="transactions"><i class="fa-solid fa-clipboard-list"></i><span style="font-size:0.92rem;">Транзакции</span></button>
+        <button class="blum-menu-btn" data-section="shop"><i class="fa-solid fa-store"></i><span style="font-size:0.92rem;">Магазин</span></button>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Переключение страниц
-        const navBtns = document.querySelectorAll('.blum-nav-btn');
-        const pages = document.querySelectorAll('.blum-page');
-        navBtns.forEach(btn => {
+        // Плавный скролл по разделам через нижнее меню
+        const menuBtns = document.querySelectorAll('.blum-menu-btn');
+        menuBtns.forEach(btn => {
             btn.onclick = () => {
-                navBtns.forEach(b => b.classList.remove('active'));
+                menuBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                pages.forEach(p => p.style.display = 'none');
-                document.getElementById('page-' + btn.dataset.page).style.display = '';
+                const section = document.getElementById('section-' + btn.dataset.section);
+                if (section) {
+                    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
             };
         });
     </script>
