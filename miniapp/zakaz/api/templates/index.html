@@ -287,18 +287,26 @@
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Плавный скролл по разделам через нижнее меню
+        // Переключение страниц по нижнему меню
         const menuBtns = document.querySelectorAll('.blum-menu-btn');
-        menuBtns.forEach(btn => {
+        const sections = [
+            document.getElementById('section-profile'),
+            document.getElementById('section-upgrades'),
+            document.getElementById('section-achievements'),
+            document.getElementById('section-transactions'),
+            document.getElementById('section-shop')
+        ];
+        menuBtns.forEach((btn, idx) => {
             btn.onclick = () => {
                 menuBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const section = document.getElementById('section-' + btn.dataset.section);
-                if (section) {
-                    section.scrollIntoView({behavior: 'smooth', block: 'start'});
-                }
+                sections.forEach((sec, i) => {
+                    sec.style.display = (i === idx) ? '' : 'none';
+                });
             };
         });
+        // По умолчанию показываем только первую секцию
+        sections.forEach((sec, i) => { sec.style.display = (i === 0) ? '' : 'none'; });
     </script>
 </body>
 </html>
