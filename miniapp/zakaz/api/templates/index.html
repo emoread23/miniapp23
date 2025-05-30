@@ -279,11 +279,10 @@
             <div class="blum-section-title"><i class="fa-solid fa-user"></i>Профиль</div>
             <div class="blum-card text-center">
                 <div class="blum-profile-avatar"><i class="fa-solid fa-user"></i></div>
-                <div class="blum-profile-level">Новичок</div>
+                <div class="blum-profile-name">{{ username or 'Гость' }}</div>
                 <div class="blum-profile-status"><i class="fa-solid fa-circle" style="font-size:0.7em;color:#4be04b;"></i> В сети</div>
-                <button class="blum-profile-bonus-btn" id="bonusBtn"><i class="fa-solid fa-gift"></i> Получить бонус</button>
-                <div class="blum-profile-id">ID: <span id="profileId">123456789</span> <button class="blum-profile-id-copy" onclick="navigator.clipboard.writeText('123456789')"><i class="fa-regular fa-copy"></i></button></div>
-                <div class="blum-profile-ref">Реф. ссылка: <span id="refLink">https://t.me/fddsfhsdibot?start=123456789</span> <button class="blum-profile-ref-copy" onclick="navigator.clipboard.writeText('https://t.me/fddsfhsdibot?start=123456789')"><i class="fa-regular fa-copy"></i></button></div>
+                <div class="blum-profile-id">ID: <span id="profileId">{{ user_id }}</span> <button class="blum-profile-id-copy" onclick="navigator.clipboard.writeText('{{ user_id }}')"><i class="fa-regular fa-copy"></i></button></div>
+                <div class="blum-profile-ref">Реф. ссылка: <span id="refLink">https://t.me/fddsfhsdibot?start={{ user_id }}</span> <button class="blum-profile-ref-copy" onclick="navigator.clipboard.writeText('https://t.me/fddsfhsdibot?start={{ user_id }}')"><i class="fa-regular fa-copy"></i></button></div>
                 <div class="blum-profile-stats">Баланс: <span class="stat-value">0</span> USDT</div>
                 <div class="blum-profile-stats">Всего вложено: <span class="stat-value">0</span> USDT</div>
                 <div class="blum-profile-stats">Всего выведено: <span class="stat-value">0</span> USDT</div>
