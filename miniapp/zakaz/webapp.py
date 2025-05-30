@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import desc, func
+import requests
 
 app = Flask(__name__, template_folder='api/templates')
 
@@ -68,6 +69,9 @@ CLICK_REWARD = 0.01  # USDT
 REFERRAL_BONUS_PERCENT = 5  # 5% от заработка реферала
 DAILY_BONUS = 0.1  # USDT
 MIN_WITHDRAW = 1.0  # USDT
+
+CRYPTOBOT_TOKEN = "370599:AAebN2XL0BqD5Sw9TlUwrUDCOrSjTmEdV4j"
+CRYPTOBOT_API = "https://pay.crypt.bot/api"
 
 # Вспомогательные функции
 def calculate_level_reward(level):
@@ -343,6 +347,33 @@ def save_user():
         db.session.add(user)
     db.session.commit()
     return jsonify({'success': True, 'message': 'Пользователь сохранён'})
+
+@app.route('/api/create_invoice', methods=['POST'])
+def create_invoice():
+    data = request.get_json()
+    amount = data.get('amount')
+    user_id = data.get('user_id')
+    if not amount or not user_id:
+        return jsonify({'success': False, 'message': 'Нет суммы или user_id'}), 400
+
+    payload = {
+        "asset": "USDT",
+        "amount": str(amount),
+        "description": "Пополнение баланса через CryptoBot",
+        "hidden_message": f"User ID: {user_id}",
+        "paid_btn_name": "openBot",
+        "paid_btn_url": "https://t.me/CryptoEmpBot"  # можешь заменить на свой бот
+    }
+    headers = {
+        "Crypto-Pay-API-Token": CRYPTOBOT_TOKEN,
+        "Content-Type": "application/json"
+    }
+    resp = requests.post(f"{CRYPTOBOT_API}/createInvoice", json=payload, headers=headers)
+    if resp.status_code == 200:
+        invoice = resp.json()['result']
+        return jsonify({'success': True, 'pay_url': invoice['pay_url']})
+    else:
+        return jsonify({'success': False, 'message': resp.text}), 500
 
 if __name__ == '__main__':
     # Создаем таблицы в базе данных (только для локального запуска/тестирования)
