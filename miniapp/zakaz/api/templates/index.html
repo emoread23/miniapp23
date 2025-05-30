@@ -8,219 +8,186 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(120deg, #18122B 0%, #393053 100%);
-            color: #fff;
+            background: #181824;
+            color: #f3f3f7;
             font-family: 'Inter', 'Arial', sans-serif;
             padding-bottom: 70px;
         }
-        .container {
-            max-width: 960px;
-        }
-        .blum-card {
-            background: rgba(40, 30, 70, 0.95);
-            border-radius: 22px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1.5px solid rgba(255,255,255,0.08);
+        .container { max-width: 960px; }
+        .blum-card, .blum-section-card {
+            background: #232336;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(20,20,40,0.18);
+            border: 1.5px solid #232336;
             margin-bottom: 24px;
             overflow: hidden;
         }
-        .blum-header {
-            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
-            border-radius: 22px 22px 0 0;
-            padding: 24px 24px 16px 24px;
+        .blum-header, .blum-section-header {
+            background: #232336;
+            border-radius: 18px 18px 0 0;
+            padding: 20px 24px 14px 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
         .blum-avatar {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            border: 4px solid;
-            border-image: linear-gradient(135deg, #A084E8 0%, #8BE8E5 100%);
-            border-image-slice: 1;
-            background: #fff;
+            background: #232336;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: #A084E8;
-            box-shadow: 0 2px 12px 0 rgba(160,132,232,0.15);
+            font-size: 2.2rem;
+            color: #7b7be6;
+            box-shadow: 0 2px 8px 0 rgba(123,123,230,0.10);
         }
         .blum-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin: 0;
-            color: #fff;
+            color: #f3f3f7;
         }
-        .blum-body {
-            padding: 24px;
+        .blum-level {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #7b7be6;
+            margin-bottom: 8px;
+        }
+        .blum-body, .blum-section-body {
+            padding: 22px;
         }
         .blum-stat {
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .blum-stat-label {
-            color: #B6BBC4;
+            color: #b6bbc4;
             font-size: 1rem;
         }
         .blum-stat-value {
-            font-size: 1.3rem;
+            font-size: 1.18rem;
             font-weight: 700;
-            color: #A084E8;
-        }
-        .blum-level {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #8BE8E5;
-            margin-bottom: 8px;
+            color: #7b7be6;
         }
         .blum-progress {
-            background: #393053;
+            background: #232336;
             border-radius: 8px;
-            height: 12px;
+            height: 10px;
             margin: 10px 0 8px 0;
             overflow: hidden;
         }
         .blum-progress-bar {
-            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
+            background: #7b7be6;
             height: 100%;
             width: 0%;
         }
         .blum-btn {
-            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
-            color: #fff;
-            border: none;
+            background: #232336;
+            color: #f3f3f7;
+            border: 1.5px solid #39396a;
             border-radius: 12px;
-            padding: 12px 0;
-            font-size: 1.1rem;
+            padding: 13px 0;
+            font-size: 1.08rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 13px;
             width: 100%;
-            transition: box-shadow 0.2s, transform 0.2s;
-            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.10);
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+            box-shadow: 0 2px 8px 0 rgba(123,123,230,0.07);
         }
         .blum-btn:last-child { margin-bottom: 0; }
         .blum-btn:hover {
-            box-shadow: 0 4px 16px 0 rgba(160,132,232,0.18);
+            background: #2e2e4d;
+            color: #fff;
+            box-shadow: 0 4px 16px 0 rgba(123,123,230,0.13);
             transform: translateY(-2px) scale(1.03);
         }
-        @media (max-width: 767.98px) {
-            .blum-header, .blum-body { padding: 16px; }
-            .blum-avatar { width: 48px; height: 48px; font-size: 1.7rem; }
-        }
-        .blum-section-card {
-            background: rgba(40, 30, 70, 0.95);
-            border-radius: 22px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            border: 1.5px solid rgba(255,255,255,0.06);
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
-        .blum-section-header {
-            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
-            border-radius: 22px 22px 0 0;
-            padding: 20px 24px 14px 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .blum-section-header i {
-            font-size: 1.7rem;
-            color: #fff;
-            background: linear-gradient(135deg, #A084E8 0%, #8BE8E5 100%);
-            border-radius: 50%;
-            padding: 10px;
-            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.10);
-        }
         .blum-section-title {
-            font-size: 1.2rem;
+            font-size: 1.13rem;
             font-weight: 700;
-            color: #fff;
+            color: #f3f3f7;
             margin: 0;
-        }
-        .blum-section-body {
-            padding: 24px;
         }
         /* Апгрейды */
         .blum-upgrade-card {
-            background: rgba(160,132,232,0.08);
-            border-radius: 16px;
-            padding: 18px 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.07);
+            background: #232336;
+            border-radius: 14px;
+            padding: 15px 14px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px 0 rgba(123,123,230,0.05);
         }
         .blum-upgrade-title {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: #A084E8;
+            color: #7b7be6;
         }
         .blum-upgrade-desc {
-            color: #B6BBC4;
-            font-size: 0.98rem;
+            color: #b6bbc4;
+            font-size: 0.97rem;
             margin-bottom: 6px;
         }
         /* Достижения */
         .blum-achievement-card {
-            background: rgba(139,232,229,0.08);
-            border-radius: 16px;
-            padding: 18px 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px 0 rgba(139,232,229,0.07);
+            background: #232336;
+            border-radius: 14px;
+            padding: 15px 10px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px 0 rgba(139,232,229,0.04);
             text-align: center;
         }
         .blum-achievement-img {
-            width: 54px;
-            height: 54px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            border: 2.5px solid #8BE8E5;
+            border: 2px solid #7b7be6;
             margin-bottom: 8px;
             object-fit: cover;
             background: #fff;
         }
         .blum-achievement-title {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #8BE8E5;
+            color: #7b7be6;
         }
         .blum-achievement-desc {
-            color: #B6BBC4;
-            font-size: 0.95rem;
+            color: #b6bbc4;
+            font-size: 0.93rem;
         }
         /* Транзакции */
         .blum-transaction-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #393053;
+            padding: 10px 0;
+            border-bottom: 1px solid #232336;
         }
         .blum-transaction-row:last-child { border-bottom: none; }
         .blum-transaction-type {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #A084E8;
+            color: #7b7be6;
         }
         .blum-transaction-amount {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #8BE8E5;
+            color: #8be8e5;
         }
         .blum-transaction-status {
-            font-size: 0.95rem;
-            color: #B6BBC4;
+            font-size: 0.93rem;
+            color: #b6bbc4;
             margin-left: 8px;
         }
         .blum-transaction-date {
-            font-size: 0.92rem;
-            color: #B6BBC4;
+            font-size: 0.91rem;
+            color: #b6bbc4;
             margin-left: 12px;
         }
         @media (max-width: 767.98px) {
-            .blum-section-header, .blum-section-body { padding: 14px; }
+            .blum-header, .blum-body, .blum-section-header, .blum-section-body { padding: 12px; }
+            .blum-avatar { width: 40px; height: 40px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -335,10 +302,76 @@
         </div>
     </div>
 
+    <!-- Модальные окна -->
+    <div class="modal fade" id="investModal" tabindex="-1" aria-labelledby="investModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="investModalLabel">Инвестировать</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Функция инвестирования скоро будет доступна!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="withdrawModalLabel">Вывести прибыль</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Функция вывода скоро будет доступна!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="stubModal" tabindex="-1" aria-labelledby="stubModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="stubModalLabel">Секция в разработке</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Эта секция скоро появится!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // Отключаю динамическую подгрузку профиля и уровня
+        // Реальные действия для кнопок
+        const btns = document.querySelectorAll('.blum-btn');
+        const sectionSelectors = [null, null, '.blum-section-card:nth-of-type(1)', '.blum-section-card:nth-of-type(2)', '.blum-section-card:nth-of-type(3)'];
+
+        btns[0].onclick = () => new bootstrap.Modal(document.getElementById('investModal')).show();
+        btns[1].onclick = () => new bootstrap.Modal(document.getElementById('withdrawModal')).show();
+
+        for (let i = 2; i < btns.length; i++) {
+            const section = document.querySelector(sectionSelectors[i]);
+            if (section) {
+                btns[i].onclick = () => {
+                    section.scrollIntoView({behavior: 'smooth', block: 'start'});
+                };
+            } else {
+                btns[i].onclick = () => new bootstrap.Modal(document.getElementById('stubModal')).show();
+            }
+        }
     </script>
 </body>
 </html>
