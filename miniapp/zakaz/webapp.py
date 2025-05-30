@@ -10,7 +10,8 @@ app = Flask(__name__, template_folder='api/templates')
 
 # Конфигурация базы данных
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'crypto_empire.db')
+# Используем переменную окружения DATABASE_URL, если она есть, иначе используем SQLite
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///' + os.path.join(basedir, 'crypto_empire.db'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_size': 10,
@@ -99,7 +100,18 @@ def process_referral_bonus(referrer, amount):
 # Эндпоинты
 @app.route('/')
 def index():
-    return render_template('index.html')
+    user_id = request.args.get('user_id')
+    user = None
+    if user_id:
+        try:
+            user = User.query.filter_by(telegram_id=int(user_id)).first()
+        except ValueError:
+            user = None
+    return render_template(
+        'index.html',
+        username=user.username if user else None,
+        user_id=user.telegram_id if user else None
+    )
 
 @app.route('/api/user/<int:telegram_id>')
 def get_user(telegram_id):
@@ -315,6 +327,22 @@ def get_available_upgrades():
 def get_available_achievements():
     # return jsonify(ACHIEVEMENTS) # Если ACHIEVEMENTS будет доступна
     return jsonify([])
+
+@app.route('/api/save_user', methods=['POST'])
+def save_user():
+    data = request.get_json()
+    telegram_id = data.get('telegram_id')
+    username = data.get('username')
+    if not telegram_id or not username:
+        return jsonify({'success': False, 'message': 'Не передан telegram_id или username'}), 400
+    user = User.query.filter_by(telegram_id=telegram_id).first()
+    if user:
+        user.username = username
+    else:
+        user = User(telegram_id=telegram_id, username=username)
+        db.session.add(user)
+    db.session.commit()
+    return jsonify({'success': True, 'message': 'Пользователь сохранён'})
 
 if __name__ == '__main__':
     # Создаем таблицы в базе данных (только для локального запуска/тестирования)

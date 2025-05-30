@@ -1,4 +1,4 @@
-from webapp import app
+from webapp import app, db
 from flask_sqlalchemy import SQLAlchemy
 from init_levels import init_levels
 
@@ -8,7 +8,7 @@ def init_database():
     with app.app_context():
         # Создаем все таблицы
         db.create_all()
-        print("Таблицы созданы успешно!")
+        print("База данных успешно инициализирована!")
         
         # Инициализируем уровни
         init_levels()

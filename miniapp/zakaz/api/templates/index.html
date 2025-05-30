@@ -274,44 +274,39 @@
 </head>
 <body>
     <div class="container-main">
-        <!-- Профиль -->
-        <section class="blum-section" id="section-profile">
-            <div class="blum-section-title"><i class="fa-solid fa-user"></i>Профиль</div>
-            <div class="blum-card text-center">
-                <div class="blum-profile-avatar"><i class="fa-solid fa-user"></i></div>
-                <div class="blum-profile-name">{{ username or 'Гость' }}</div>
-                <div class="blum-profile-status"><i class="fa-solid fa-circle" style="font-size:0.7em;color:#4be04b;"></i> В сети</div>
-                <div class="blum-profile-id">ID: <span id="profileId">{{ user_id }}</span> <button class="blum-profile-id-copy" onclick="navigator.clipboard.writeText('{{ user_id }}')"><i class="fa-regular fa-copy"></i></button></div>
-                <div class="blum-profile-ref">Реф. ссылка: <span id="refLink">https://t.me/fddsfhsdibot?start={{ user_id }}</span> <button class="blum-profile-ref-copy" onclick="navigator.clipboard.writeText('https://t.me/fddsfhsdibot?start={{ user_id }}')"><i class="fa-regular fa-copy"></i></button></div>
-                <div class="blum-profile-stats">Баланс: <span class="stat-value">0</span> USDT</div>
-                <div class="blum-profile-stats">Всего вложено: <span class="stat-value">0</span> USDT</div>
-                <div class="blum-profile-stats">Всего выведено: <span class="stat-value">0</span> USDT</div>
+        <!-- Баланс -->
+        <section class="blum-section" id="section-balance">
+            <div class="blum-section-title"><i class="fa-solid fa-wallet"></i>Баланс</div>
+            <div class="blum-card text-center" style="gap:18px;">
+                <div class="blum-balance-row">
+                    <div class="blum-balance-label">Текущий баланс</div>
+                    <div class="blum-balance-value">0 USDT</div>
+                </div>
+                <div class="blum-balance-row">
+                    <div class="blum-balance-label">Всего вложено</div>
+                    <div class="blum-balance-value">0 USDT</div>
+                </div>
+                <div class="blum-balance-row">
+                    <div class="blum-balance-label">Всего выведено</div>
+                    <div class="blum-balance-value">0 USDT</div>
+                </div>
+                <button class="blum-btn-main" id="btn-invest"><i class="fas fa-coins"></i> Инвестировать</button>
+                <button class="blum-btn-main" id="btn-withdraw"><i class="fas fa-wallet"></i> Вывести прибыль</button>
             </div>
         </section>
         <!-- Апгрейды -->
         <section class="blum-section" id="section-upgrades">
             <div class="blum-section-title"><i class="fa-solid fa-rocket"></i>Апгрейды</div>
             <div class="blum-upgrade-card">
-                <div class="blum-upgrade-title">Фейковый апгрейд</div>
-                <div class="blum-upgrade-desc">Описание апгрейда для красоты интерфейса.</div>
-                <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
-            </div>
-            <div class="blum-upgrade-card">
                 <div class="blum-upgrade-title">Скорость клика</div>
                 <div class="blum-upgrade-desc">Увеличивает скорость заработка.</div>
                 <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
+                <button class="blum-btn-main blum-btn-small">Улучшить</button>
             </div>
         </section>
         <!-- Достижения -->
         <section class="blum-section" id="section-achievements">
             <div class="blum-section-title"><i class="fa-solid fa-trophy"></i>Достижения</div>
-            <div class="blum-achievement-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
-                <div>
-                    <div class="blum-achievement-title">Фейковое достижение</div>
-                    <div class="blum-achievement-desc">Получено за красоту!</div>
-                </div>
-            </div>
             <div class="blum-achievement-card">
                 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="blum-achievement-img" alt="Достижение">
                 <div>
@@ -333,92 +328,109 @@
                     <span class="blum-transaction-date">01.01.2024</span>
                 </div>
             </div>
-            <div class="blum-transaction-card">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="blum-transaction-type">Вывод</span>
-                    <span class="blum-transaction-amount">-0 USDT</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="blum-transaction-status">Выполнено</span>
-                    <span class="blum-transaction-date">01.01.2024</span>
-                </div>
-            </div>
         </section>
         <!-- Действия и кнопки -->
         <section class="blum-section" id="section-actions">
             <div class="blum-section-title"><i class="fa-solid fa-bars"></i>Действия</div>
             <div class="blum-card">
-                <button class="blum-btn-main"><i class="fas fa-coins"></i> Инвестировать</button>
-                <button class="blum-btn-main"><i class="fas fa-wallet"></i> Вывести прибыль</button>
-                <button class="blum-btn-main"><i class="fas fa-users"></i> Друзья</button>
-                <button class="blum-btn-main"><i class="fas fa-store"></i> Магазин</button>
-                <button class="blum-btn-main"><i class="fas fa-chart-bar"></i> Топ игроков</button>
+                <button class="blum-btn-main" id="btn-friends"><i class="fas fa-users"></i> Друзья</button>
+                <button class="blum-btn-main" id="btn-shop"><i class="fas fa-store"></i> Магазин</button>
+                <button class="blum-btn-main" id="btn-top"><i class="fas fa-chart-bar"></i> Топ игроков</button>
             </div>
         </section>
     </div>
     <!-- Нижнее меню -->
     <nav class="blum-menu">
-        <button class="blum-menu-btn active" data-section="profile"><i class="fa-solid fa-user"></i></button>
+        <button class="blum-menu-btn active" data-section="balance"><i class="fa-solid fa-wallet"></i></button>
         <button class="blum-menu-btn" data-section="upgrades"><i class="fa-solid fa-rocket"></i></button>
         <button class="blum-menu-btn" data-section="achievements"><i class="fa-solid fa-trophy"></i></button>
         <button class="blum-menu-btn" data-section="transactions"><i class="fa-solid fa-clipboard-list"></i></button>
         <button class="blum-menu-btn" data-section="actions"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <!-- Модальные окна для действий -->
+    <!-- Модальные окна -->
     <div class="modal fade" id="investModal" tabindex="-1" aria-labelledby="investModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="investModalLabel">Инвестировать</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Функция инвестирования скоро будет доступна!</p>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="investModalLabel">Инвестировать</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <form id="investForm">
+              <div class="mb-3">
+                <label for="investAmount" class="form-label">Сумма (USDT)</label>
+                <input type="number" class="form-control" id="investAmount" min="1" placeholder="Введите сумму">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Инвестировать</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
     <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="withdrawModalLabel">Вывести прибыль</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Функция вывода скоро будет доступна!</p>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="withdrawModalLabel">Вывести прибыль</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <form id="withdrawForm">
+              <div class="mb-3">
+                <label for="withdrawAmount" class="form-label">Сумма (USDT)</label>
+                <input type="number" class="form-control" id="withdrawAmount" min="1" placeholder="Введите сумму">
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Вывести</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="modal fade" id="friendsModal" tabindex="-1" aria-labelledby="friendsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="friendsModalLabel">Друзья</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <p>Здесь будет список ваших друзей и реферальная ссылка.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="shopModal" tabindex="-1" aria-labelledby="shopModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="shopModalLabel">Магазин</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <p>Здесь будет магазин апгрейдов и бустов.</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="modal fade" id="topModal" tabindex="-1" aria-labelledby="topModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="topModalLabel">Топ игроков</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Топ игроков скоро появится!</p>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="topModalLabel">Топ игроков</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <p>Здесь будет топ игроков.</p>
+          </div>
         </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Переключение страниц по нижнему меню
+        // Переключение секций SPA
         const menuBtns = document.querySelectorAll('.blum-menu-btn');
         const sections = [
-            document.getElementById('section-profile'),
+            document.getElementById('section-balance'),
             document.getElementById('section-upgrades'),
             document.getElementById('section-achievements'),
             document.getElementById('section-transactions'),
@@ -435,25 +447,15 @@
         });
         // По умолчанию показываем только первую секцию
         sections.forEach((sec, i) => { sec.style.display = (i === 0) ? '' : 'none'; });
-        // Реализация кнопок "Действия"
-        const actionBtns = document.querySelectorAll('#section-actions .blum-btn-main');
-        actionBtns[0].onclick = () => new bootstrap.Modal(document.getElementById('investModal')).show();
-        actionBtns[1].onclick = () => new bootstrap.Modal(document.getElementById('withdrawModal')).show();
-        actionBtns[2].onclick = () => document.querySelector('.blum-menu-btn[data-section="achievements"]').click();
-        actionBtns[3].onclick = () => document.querySelector('.blum-menu-btn[data-section="upgrades"]').click();
-        actionBtns[4].onclick = () => new bootstrap.Modal(document.getElementById('topModal')).show();
-        // Бонус кнопка
-        const bonusBtn = document.getElementById('bonusBtn');
-        if (bonusBtn) {
-            bonusBtn.onclick = () => {
-                bonusBtn.innerHTML = '<i class="fa-solid fa-gift"></i> Бонус получен!';
-                bonusBtn.disabled = true;
-                setTimeout(() => {
-                    bonusBtn.innerHTML = '<i class="fa-solid fa-gift"></i> Получить бонус';
-                    bonusBtn.disabled = false;
-                }, 3000);
-            };
-        }
+        // Кнопки действий
+        document.getElementById('btn-invest').onclick = () => new bootstrap.Modal(document.getElementById('investModal')).show();
+        document.getElementById('btn-withdraw').onclick = () => new bootstrap.Modal(document.getElementById('withdrawModal')).show();
+        document.getElementById('btn-friends').onclick = () => new bootstrap.Modal(document.getElementById('friendsModal')).show();
+        document.getElementById('btn-shop').onclick = () => new bootstrap.Modal(document.getElementById('shopModal')).show();
+        document.getElementById('btn-top').onclick = () => new bootstrap.Modal(document.getElementById('topModal')).show();
+        // Пример обработки форм (заглушка)
+        document.getElementById('investForm').onsubmit = e => { e.preventDefault(); alert('Инвестировано!'); document.querySelector('#investModal .btn-close').click(); };
+        document.getElementById('withdrawForm').onsubmit = e => { e.preventDefault(); alert('Заявка на вывод отправлена!'); document.querySelector('#withdrawModal .btn-close').click(); };
     </script>
 </body>
 </html>
