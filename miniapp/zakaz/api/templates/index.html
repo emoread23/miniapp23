@@ -359,9 +359,10 @@
             <form id="investForm">
               <div class="mb-3">
                 <label for="investAmount" class="form-label">Сумма (USDT)</label>
-                <input type="number" class="form-control" id="investAmount" min="1" placeholder="Введите сумму">
+                <input type="number" class="form-control" id="investAmount" min="1" placeholder="Введите сумму" required>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Инвестировать</button>
+              <button type="submit" class="btn btn-primary w-100">Оплатить через CryptoBot</button>
+              <div id="investError" class="text-danger mt-2" style="display:none;"></div>
             </form>
           </div>
         </div>
@@ -394,7 +395,21 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
           </div>
           <div class="modal-body">
-            <p>Здесь будет список ваших друзей и реферальная ссылка.</p>
+            <div class="mb-3">
+              <label class="form-label">Ваша реферальная ссылка:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="refLinkInput" value="https://t.me/fddsfhsdibot?start=YOUR_REF" readonly>
+                <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('refLinkInput').value)"><i class="fa-regular fa-copy"></i></button>
+              </div>
+            </div>
+            <div>
+              <b>Ваши друзья:</b>
+              <ul class="list-group mt-2">
+                <li class="list-group-item bg-dark text-light">@friend1</li>
+                <li class="list-group-item bg-dark text-light">@friend2</li>
+                <li class="list-group-item bg-dark text-light">@friend3</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -407,7 +422,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
           </div>
           <div class="modal-body">
-            <p>Здесь будет магазин апгрейдов и бустов.</p>
+            <div>
+              <div class="blum-upgrade-card mb-3">
+                <div class="blum-upgrade-title">Скорость клика</div>
+                <div class="blum-upgrade-desc">Увеличивает скорость заработка.</div>
+                <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
+                <button class="blum-btn-main blum-btn-small">Купить за 10 USDT</button>
+              </div>
+              <div class="blum-upgrade-card mb-3">
+                <div class="blum-upgrade-title">Автокликер</div>
+                <div class="blum-upgrade-desc">Автоматически приносит прибыль.</div>
+                <div class="blum-profile-stats">Уровень: <span class="stat-value">0</span></div>
+                <button class="blum-btn-main blum-btn-small">Купить за 25 USDT</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -420,7 +448,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
           </div>
           <div class="modal-body">
-            <p>Здесь будет топ игроков.</p>
+            <div>
+              <table class="table table-dark table-striped mb-0">
+                <thead><tr><th>#</th><th>Пользователь</th><th>Баланс</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>@top1</td><td>1000 USDT</td></tr>
+                  <tr><td>2</td><td>@top2</td><td>800 USDT</td></tr>
+                  <tr><td>3</td><td>@top3</td><td>600 USDT</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -454,7 +491,31 @@
         document.getElementById('btn-shop').onclick = () => new bootstrap.Modal(document.getElementById('shopModal')).show();
         document.getElementById('btn-top').onclick = () => new bootstrap.Modal(document.getElementById('topModal')).show();
         // Пример обработки форм (заглушка)
-        document.getElementById('investForm').onsubmit = e => { e.preventDefault(); alert('Инвестировано!'); document.querySelector('#investModal .btn-close').click(); };
+        document.getElementById('investForm').onsubmit = async e => {
+          e.preventDefault();
+          const amount = document.getElementById('investAmount').value;
+          const userId = new URLSearchParams(window.location.search).get('user_id');
+          const errorDiv = document.getElementById('investError');
+          errorDiv.style.display = 'none';
+          if (!amount || !userId) {
+            errorDiv.textContent = 'Введите сумму и перезапустите миниаппу через бота.';
+            errorDiv.style.display = 'block';
+            return;
+          }
+          const resp = await fetch('/api/create_invoice', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount, user_id: userId })
+          });
+          const data = await resp.json();
+          if (data.success) {
+            window.open(data.pay_url, '_blank');
+            document.querySelector('#investModal .btn-close').click();
+          } else {
+            errorDiv.textContent = data.message || 'Ошибка создания платежа.';
+            errorDiv.style.display = 'block';
+          }
+        };
         document.getElementById('withdrawForm').onsubmit = e => { e.preventDefault(); alert('Заявка на вывод отправлена!'); document.querySelector('#withdrawModal .btn-close').click(); };
     </script>
 </body>
