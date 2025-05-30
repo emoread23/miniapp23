@@ -8,92 +8,109 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, #1a1a1a, #0f0f0f);
-            color: #ffffff;
-            font-family: 'Arial', sans-serif; /* Можно заменить на более интересный шрифт */
-            padding-bottom: 70px; /* Отступ снизу для будущей навигации */
+            background: linear-gradient(120deg, #18122B 0%, #393053 100%);
+            color: #fff;
+            font-family: 'Inter', 'Arial', sans-serif;
+            padding-bottom: 70px;
         }
         .container {
-            max-width: 960px; /* Ограничиваем ширину на больших экранах */
+            max-width: 960px;
         }
-        .card {
-            background-color: #2d2d2d;
-            border: 1px solid #444;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            overflow: hidden; /* Для скругления углов изображений */
+        .blum-card {
+            background: rgba(40, 30, 70, 0.95);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1.5px solid rgba(255,255,255,0.08);
+            margin-bottom: 24px;
+            overflow: hidden;
         }
-        .card-header {
-            background-color: #3d3d3d;
-            border-bottom: 1px solid #444;
-            padding: 15px 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #00aaff; /* Цвет заголовков карточек */
+        .blum-header {
+            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
+            border-radius: 22px 22px 0 0;
+            padding: 24px 24px 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-         .card-header i {
-             margin-right: 10px;
-             color: #00aaff;
-         }
-        .card-body {
-            padding: 20px;
+        .blum-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 4px solid;
+            border-image: linear-gradient(135deg, #A084E8 0%, #8BE8E5 100%);
+            border-image-slice: 1;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #A084E8;
+            box-shadow: 0 2px 12px 0 rgba(160,132,232,0.15);
         }
-        h4, h5 {
-            color: #ffffff;
+        .blum-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
         }
-        p {
-            color: #cccccc;
+        .blum-body {
+            padding: 24px;
+        }
+        .blum-stat {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .blum-stat-label {
+            color: #B6BBC4;
+            font-size: 1rem;
+        }
+        .blum-stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #A084E8;
+        }
+        .blum-level {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #8BE8E5;
             margin-bottom: 8px;
         }
-        .stat-value {
-            font-weight: bold;
-            color: #00c0ff; /* Цвет значений статистики */
+        .blum-progress {
+            background: #393053;
+            border-radius: 8px;
+            height: 12px;
+            margin: 10px 0 8px 0;
+            overflow: hidden;
         }
-
-        .progress {
-            background-color: #444;
-            height: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
+        .blum-progress-bar {
+            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
+            height: 100%;
+            width: 0%;
         }
-        .progress-bar {
-            background-color: #00aaff; /* Цвет прогресс бара */
+        .blum-btn {
+            background: linear-gradient(90deg, #A084E8 0%, #8BE8E5 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            width: 100%;
+            transition: box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px 0 rgba(160,132,232,0.10);
         }
-
-        .badge {
-            font-size: 0.9em;
-            padding: 0.5em 0.75em;
+        .blum-btn:last-child { margin-bottom: 0; }
+        .blum-btn:hover {
+            box-shadow: 0 4px 16px 0 rgba(160,132,232,0.18);
+            transform: translateY(-2px) scale(1.03);
         }
-        .bg-success { background-color: #28a745 !important; }
-        .bg-primary { background-color: #007bff !important; }
-        .bg-warning { background-color: #ffc107 !important; color: #333 !important; }
-
-        .achievement-image {
-            width: 60px; /* Размер иконок достижений */
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%; /* Круглая форма */
-            border: 2px solid #00aaff;
-            margin-bottom: 10px;
-        }
-
-        /* Мобильная адаптивность */
         @media (max-width: 767.98px) {
-            .col-md-4, .col-md-8 {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            .card-body {
-                padding: 15px;
-            }
-            .card-header {
-                font-size: 1.1em;
-            }
-             .achievement-image {
-                 width: 50px;
-                 height: 50px;
-             }
+            .blum-header, .blum-body { padding: 16px; }
+            .blum-avatar { width: 48px; height: 48px; font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -101,43 +118,45 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-md-4">
-                <!-- Профиль пользователя -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0"><i class="fas fa-user-circle"></i> Профиль</h5>
-                    </div>
-                    <div class="card-body">
-                        <h4 id="username">Загрузка...</h4>
-                        <p>Баланс: <span id="balance" class="stat-value"></span> USDT</p>
-                        <p>Всего вложено: <span id="total-deposit" class="stat-value"></span> USDT</p>
-                        <p>Всего выведено: <span id="total-withdraw" class="stat-value"></span> USDT</p>
-                    </div>
-                </div>
-
-                <!-- Уровень -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0"><i class="fas fa-chart-line"></i> Уровень</h5>
-                    </div>
-                    <div class="card-body">
-                        <h4 id="level-name">Загрузка...</h4>
-                        <p>Доход в месяц: <span id="monthly-income" class="stat-value"></span>%</p>
-                        <p>Реферальный бонус: <span id="referral-bonus" class="stat-value"></span>%</p>
-                        <div class="progress">
-                            <div id="level-progress" class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                <!-- Blum-style профиль -->
+                <div class="blum-card">
+                    <div class="blum-header">
+                        <div class="blum-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <div class="blum-title">Гость</div>
+                            <div class="blum-level">Новичок</div>
                         </div>
-                        <p class="mt-2">До следующего уровня: <span id="next-level" class="stat-value"></span></p>
+                    </div>
+                    <div class="blum-body">
+                        <div class="blum-stat"><span class="blum-stat-label">Баланс:</span> <span class="blum-stat-value">0</span> USDT</div>
+                        <div class="blum-stat"><span class="blum-stat-label">Всего вложено:</span> <span class="blum-stat-value">0</span> USDT</div>
+                        <div class="blum-stat"><span class="blum-stat-label">Всего выведено:</span> <span class="blum-stat-value">0</span> USDT</div>
                     </div>
                 </div>
-                 <!-- Место для кнопок действий -->
-                <div class="card">
-                    <div class="card-body">
-                         <!-- Кнопки будут добавлены здесь -->
-                         <button class="btn btn-primary w-100 mb-2"><i class="fas fa-coins"></i> Инвестировать</button>
-                         <button class="btn btn-primary w-100 mb-2"><i class="fas fa-wallet"></i> Вывести прибыль</button>
-                         <button class="btn btn-primary w-100 mb-2"><i class="fas fa-users"></i> Друзья</button>
-                         <button class="btn btn-primary w-100 mb-2"><i class="fas fa-store"></i> Магазин</button>
-                         <button class="btn btn-primary w-100"><i class="fas fa-chart-bar"></i> Топ игроков</button>
+                <!-- Blum-style уровень -->
+                <div class="blum-card">
+                    <div class="blum-header">
+                        <i class="fas fa-chart-line blum-avatar" style="font-size:2rem;background:transparent;border:none;box-shadow:none;"></i>
+                        <div>
+                            <div class="blum-title">Уровень</div>
+                            <div class="blum-level">Новичок</div>
+                        </div>
+                    </div>
+                    <div class="blum-body">
+                        <div class="blum-stat"><span class="blum-stat-label">Доход в месяц:</span> <span class="blum-stat-value">0</span>%</div>
+                        <div class="blum-stat"><span class="blum-stat-label">Реферальный бонус:</span> <span class="blum-stat-value">0</span>%</div>
+                        <div class="blum-progress"><div class="blum-progress-bar" style="width:0%"></div></div>
+                        <div class="blum-stat"><span class="blum-stat-label">До следующего уровня:</span> <span class="blum-stat-value">0</span></div>
+                    </div>
+                </div>
+                <!-- Blum-style кнопки -->
+                <div class="blum-card">
+                    <div class="blum-body">
+                        <button class="blum-btn"><i class="fas fa-coins"></i> Инвестировать</button>
+                        <button class="blum-btn"><i class="fas fa-wallet"></i> Вывести прибыль</button>
+                        <button class="blum-btn"><i class="fas fa-users"></i> Друзья</button>
+                        <button class="blum-btn"><i class="fas fa-store"></i> Магазин</button>
+                        <button class="blum-btn"><i class="fas fa-chart-bar"></i> Топ игроков</button>
                     </div>
                 </div>
             </div>
@@ -185,161 +204,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // Функция для загрузки данных пользователя
-        async function loadUserData(telegramId) {
-            if (!telegramId) {
-                console.error("Telegram User ID not found in URL.");
-                // Возможно, показать сообщение об ошибке пользователю
-                document.getElementById('username').textContent = "Ошибка: ID пользователя не найден.";
-                return;
-            }
-
-            try {
-                const response = await fetch(`/api/user/${telegramId}`);
-                if (!response.ok) {
-                    // Обработка ошибок HTTP, например 404
-                    if (response.status === 404) {
-                        document.getElementById('username').textContent = "Пользователь не найден.";
-                    } else {
-                        document.getElementById('username').textContent = `Ошибка сервера: ${response.status}`;
-                    }
-                     console.error(`HTTP error! status: ${response.status}`);
-                    return;
-                }
-                const data = await response.json();
-
-                // Заполняем профиль
-                document.getElementById('username').textContent = data.user.username || 'Без имени';
-                document.getElementById('balance').textContent = data.user.balance ? data.user.balance.toFixed(2) : '0.00';
-                document.getElementById('total-deposit').textContent = data.user.total_deposit ? data.user.total_deposit.toFixed(2) : '0.00';
-                document.getElementById('total-withdraw').textContent = data.user.total_withdraw ? data.user.total_withdraw.toFixed(2) : '0.00';
-
-                // Заполняем уровень
-                document.getElementById('level-name').textContent = data.level.name || 'Не определен';
-                document.getElementById('monthly-income').textContent = data.level.monthly_income || '0';
-                document.getElementById('referral-bonus').textContent = data.level.referral_bonus || '0';
-
-                const totalReferrals = data.referrals.total || 0;
-                const requiredReferrals = data.level.required_referrals || 1; // Избегаем деления на ноль
-                const progress = (totalReferrals / requiredReferrals) * 100;
-                const progressBar = document.getElementById('level-progress');
-                progressBar.style.width = `${Math.min(progress, 100)}%`; // Прогресс не более 100%
-                progressBar.setAttribute('aria-valuenow', Math.min(progress, 100));
-                progressBar.setAttribute('aria-valuemin', 0);
-                progressBar.setAttribute('aria-valuemax', 100);
-
-
-                document.getElementById('next-level').textContent =
-                    `${totalReferrals}/${requiredReferrals} рефералов`;
-
-                // Заполняем апгрейды
-                const upgradesList = document.getElementById('upgrades-list');
-                upgradesList.innerHTML = ''; // Очищаем перед заполнением
-                if (data.upgrades && data.upgrades.length > 0) {
-                     data.upgrades.forEach(upgrade => {
-                         // Убедитесь, что у вас есть max_level в данных апгрейдов, если нет, удалите или измените строку
-                         const maxLevel = upgrade.max_level !== undefined ? `/${upgrade.max_level}` : '';
-                         upgradesList.innerHTML += `
-                            <div class="col-12 col-sm-6 mb-3">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${upgrade.name}</h5>
-                                        <p class="card-text">${upgrade.description}</p>
-                                        <p>Уровень: ${upgrade.level}${maxLevel}</p>
-                                    </div>
-                                </div>
-                            </div>
-                         `;
-                     });
-                } else {
-                     upgradesList.innerHTML = '<div class="col-12"><p>Нет активных апгрейдов.</p></div>';
-                }
-
-
-                // Заполняем достижения
-                const achievementsList = document.getElementById('achievements-list');
-                achievementsList.innerHTML = ''; // Очищаем перед заполнением
-                if (data.achievements && data.achievements.length > 0) {
-                    data.achievements.forEach(achievement => {
-                        // Предполагаем, что image_url существует в данных достижения, если нет, используйте дефолтную картинку или удалите
-                        const imageUrl = achievement.image_url || 'placeholder.png'; // Замените на реальный путь к плейсхолдеру
-                         achievementsList.innerHTML += `
-                            <div class="col-6 col-sm-4 col-md-4 mb-3">
-                                <div class="card h-100">
-                                    <div class="card-body text-center">
-                                        <img src="${imageUrl}" alt="${achievement.name}" class="achievement-image">
-                                        <h5 class="card-title">${achievement.name}</h5>
-                                        <p class="card-text">${achievement.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                         `;
-                     });
-                } else {
-                     achievementsList.innerHTML = '<div class="col-12"><p>Нет полученных достижений.</p></div>';
-                }
-
-
-                // Заполняем транзакции
-                const transactionsList = document.getElementById('transactions-list');
-                transactionsList.innerHTML = ''; // Очищаем перед заполнением
-                if (data.transactions && data.transactions.length > 0) {
-                    data.transactions.forEach(transaction => {
-                        const date = new Date(transaction.created_at).toLocaleString();
-                         transactionsList.innerHTML += `
-                            <div class="d-flex justify-content-between align-items-center mb-2 pb-2" style="border-bottom: 1px solid #3d3d3d;">
-                                <div>
-                                    <span class="badge bg-${transaction.type === 'deposit' || transaction.type === 'income' ? 'success' : 'primary'}">
-                                        ${transaction.type}
-                                    </span>
-                                     <span class="stat-value">${transaction.amount ? transaction.amount.toFixed(2) : '0.00'}</span> USDT
-                                </div>
-                                <div>
-                                    <span class="badge bg-${transaction.status === 'completed' ? 'success' : (transaction.status === 'cancelled' ? 'danger' : 'warning')}">
-                                        ${transaction.status}
-                                    </span>
-                                    <small class="text-muted">${date}</small>
-                                </div>
-                            </div>
-                         `;
-                    });
-                } else {
-                     transactionsList.innerHTML = '<p>Нет последних транзакций.</p>';
-                }
-
-
-            } catch (error) {
-                console.error("Error loading user data:", error);
-                 document.getElementById('username').textContent = "Ошибка загрузки данных.";
-            }
-        }
-
-        // Загружаем данные при загрузке страницы
-        function initWebApp() {
-            // Получаем telegram_id из URL
-            const urlParams = new URLSearchParams(window.location.search);
-            let telegramId = urlParams.get('user_id');
-            console.log("Attempted to get Telegram ID from URL:", telegramId); // Логирование 1
-
-            // Пытаемся получить telegram_id из Telegram WebApp объекта, если он доступен
-            if (!telegramId && window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
-                 telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
-                 console.log("Telegram ID obtained from WebApp object:", telegramId); // Логирование 2
-            }
-
-            console.log("Final telegramId before loading data:", telegramId); // Логирование 3
-            if (telegramId) {
-                loadUserData(telegramId);
-            } else {
-                 document.getElementById('username').textContent = "Ошибка: ID пользователя не найден в ссылке.";
-            }
-        }
-
-        // Ждем полной загрузки WebApp объекта (добавляем небольшую задержку)
-        // Хотя у WebApp нет специального события 'ready', можно использовать setTimeout или проверку в цикле
-        // Попробуем setTimeout как более простой вариант
-        setTimeout(initWebApp, 100); // Задержка 100 мс
-
+        // Отключаю динамическую подгрузку профиля и уровня
     </script>
 </body>
 </html>
