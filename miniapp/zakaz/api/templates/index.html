@@ -207,6 +207,65 @@
         .blum-menu-btn.active, .blum-menu-btn:active {
             color: #fff;
         }
+        .blum-profile-bonus-btn {
+            background: linear-gradient(90deg, #7b7be6 0%, #8be8e5 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.01rem;
+            padding: 10px 0;
+            width: 100%;
+            margin: 18px 0 10px 0;
+            box-shadow: 0 2px 8px 0 rgba(123,123,230,0.10);
+            transition: background 0.15s;
+        }
+        .blum-profile-bonus-btn:active {
+            background: #39396a;
+        }
+        .blum-profile-id {
+            color: #b0b0c3;
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .blum-profile-id-copy {
+            background: none;
+            border: none;
+            color: #7b7be6;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0 2px;
+        }
+        .blum-profile-status {
+            color: #8be8e5;
+            font-size: 0.97rem;
+            margin-bottom: 8px;
+        }
+        .blum-profile-ref {
+            background: #232336;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.97rem;
+            padding: 7px 12px;
+            margin: 0 auto 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            max-width: 320px;
+        }
+        .blum-profile-ref-copy {
+            background: none;
+            border: none;
+            color: #8be8e5;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0 2px;
+        }
         @media (max-width: 600px) {
             .container-main { padding: 0 4px 70px 4px; }
             .blum-card, .blum-section { padding-left: 0; padding-right: 0; }
@@ -221,6 +280,10 @@
             <div class="blum-card text-center">
                 <div class="blum-profile-avatar"><i class="fa-solid fa-user"></i></div>
                 <div class="blum-profile-level">Новичок</div>
+                <div class="blum-profile-status"><i class="fa-solid fa-circle" style="font-size:0.7em;color:#4be04b;"></i> В сети</div>
+                <button class="blum-profile-bonus-btn" id="bonusBtn"><i class="fa-solid fa-gift"></i> Получить бонус</button>
+                <div class="blum-profile-id">ID: <span id="profileId">123456789</span> <button class="blum-profile-id-copy" onclick="navigator.clipboard.writeText('123456789')"><i class="fa-regular fa-copy"></i></button></div>
+                <div class="blum-profile-ref">Реф. ссылка: <span id="refLink">https://t.me/fddsfhsdibot?start=123456789</span> <button class="blum-profile-ref-copy" onclick="navigator.clipboard.writeText('https://t.me/fddsfhsdibot?start=123456789')"><i class="fa-regular fa-copy"></i></button></div>
                 <div class="blum-profile-stats">Баланс: <span class="stat-value">0</span> USDT</div>
                 <div class="blum-profile-stats">Всего вложено: <span class="stat-value">0</span> USDT</div>
                 <div class="blum-profile-stats">Всего выведено: <span class="stat-value">0</span> USDT</div>
@@ -302,6 +365,55 @@
         <button class="blum-menu-btn" data-section="transactions"><i class="fa-solid fa-clipboard-list"></i></button>
         <button class="blum-menu-btn" data-section="actions"><i class="fa-solid fa-bars"></i></button>
     </nav>
+    <!-- Модальные окна для действий -->
+    <div class="modal fade" id="investModal" tabindex="-1" aria-labelledby="investModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="investModalLabel">Инвестировать</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Функция инвестирования скоро будет доступна!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="withdrawModalLabel">Вывести прибыль</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Функция вывода скоро будет доступна!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="topModal" tabindex="-1" aria-labelledby="topModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#232336;color:#f3f3f7;border-radius:16px;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="topModalLabel">Топ игроков</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Топ игроков скоро появится!</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Переключение страниц по нижнему меню
@@ -324,6 +436,25 @@
         });
         // По умолчанию показываем только первую секцию
         sections.forEach((sec, i) => { sec.style.display = (i === 0) ? '' : 'none'; });
+        // Реализация кнопок "Действия"
+        const actionBtns = document.querySelectorAll('#section-actions .blum-btn-main');
+        actionBtns[0].onclick = () => new bootstrap.Modal(document.getElementById('investModal')).show();
+        actionBtns[1].onclick = () => new bootstrap.Modal(document.getElementById('withdrawModal')).show();
+        actionBtns[2].onclick = () => document.querySelector('.blum-menu-btn[data-section="achievements"]').click();
+        actionBtns[3].onclick = () => document.querySelector('.blum-menu-btn[data-section="upgrades"]').click();
+        actionBtns[4].onclick = () => new bootstrap.Modal(document.getElementById('topModal')).show();
+        // Бонус кнопка
+        const bonusBtn = document.getElementById('bonusBtn');
+        if (bonusBtn) {
+            bonusBtn.onclick = () => {
+                bonusBtn.innerHTML = '<i class="fa-solid fa-gift"></i> Бонус получен!';
+                bonusBtn.disabled = true;
+                setTimeout(() => {
+                    bonusBtn.innerHTML = '<i class="fa-solid fa-gift"></i> Получить бонус';
+                    bonusBtn.disabled = false;
+                }, 3000);
+            };
+        }
     </script>
 </body>
 </html>
