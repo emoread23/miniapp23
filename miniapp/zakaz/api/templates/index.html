@@ -375,20 +375,10 @@
     <script>
         // Реальные действия для кнопок
         const btns = document.querySelectorAll('.blum-btn');
-        const sectionSelectors = [null, null, '.blum-section-card:nth-of-type(1)', '.blum-section-card:nth-of-type(2)', '.blum-section-card:nth-of-type(3)'];
-
         btns[0].onclick = () => new bootstrap.Modal(document.getElementById('investModal')).show();
         btns[1].onclick = () => new bootstrap.Modal(document.getElementById('withdrawModal')).show();
-
         for (let i = 2; i < btns.length; i++) {
-            const section = document.querySelector(sectionSelectors[i]);
-            if (section) {
-                btns[i].onclick = () => {
-                    section.scrollIntoView({behavior: 'smooth', block: 'start'});
-                };
-            } else {
-                btns[i].onclick = () => new bootstrap.Modal(document.getElementById('stubModal')).show();
-            }
+            btns[i].onclick = () => new bootstrap.Modal(document.getElementById('stubModal')).show();
         }
     </script>
 </body>
